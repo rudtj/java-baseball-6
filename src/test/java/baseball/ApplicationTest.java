@@ -1,14 +1,25 @@
 package baseball;
 
+import baseball.domain.Computer;
+import baseball.utils.Utils;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+
+import java.util.Comparator;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ApplicationTest extends NsTest {
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -18,6 +29,26 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
+    }
+
+    @Test
+    void test_generateRandomNumber() {
+        //given
+
+        //when
+        final List<Integer> RandomNumber = Computer.generateRandomNumber(3);
+        //then
+        //길이 확인
+        assertThat(RandomNumber.size()).isEqualTo(3);
+
+        //중복 확인
+        long distinctCount = RandomNumber.stream().distinct().count();
+        assertEquals(distinctCount, RandomNumber.size());
+
+        //범위 확인
+        for (Integer num : RandomNumber) {
+            assertTrue(num>= 1 && num <= 9);
+        }
     }
 
     @Test
@@ -32,6 +63,4 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
-
-
 }

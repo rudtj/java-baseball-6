@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.User;
 import baseball.utils.Utils;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -11,7 +12,7 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
-            game.run();
+            User.run();
         } while (!app.gameRestart());
         System.out.println("프로그램을 종료합니다.");
     }
