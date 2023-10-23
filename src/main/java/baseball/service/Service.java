@@ -1,11 +1,8 @@
-package baseball.models;
+package baseball.service;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
 
-public class Models {
+public class Service {
     private int strikes;
     private int balls;
 
@@ -22,7 +19,7 @@ public class Models {
         this.balls = balls;
     }
 
-    public Models() {
+    public Service() {
         this.strikes = 0;
         this.balls = 0;
     }
@@ -66,21 +63,4 @@ public class Models {
         return count;
     }
 
-    public void printGameResult(int strikes, int balls) {
-        if (strikes == 0 && balls == 0) {
-            System.out.println("낫싱");
-            return;
-        }
-        if (strikes > 0 && balls > 0) {
-            System.out.printf("%d볼 %d스트라이크\n", balls, strikes);
-            return;
-        }
-        if (strikes > 0) {
-            System.out.printf("%d스트라이크\n", strikes);
-            return;
-        }
-        if (balls > 0) {
-            System.out.printf("%d볼\n", balls);
-        }
-    }
 }
